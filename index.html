@@ -26,7 +26,7 @@ a:hover{color:#FF3B2F}
 <div style="min-height:100vh;display:flex;flex-direction:column;background:#0A0A0A">
 
 <header style="position:sticky;top:0;z-index:20;background:rgba(10,10,10,.88);backdrop-filter:blur(10px);border-bottom:1px solid #262626">
-  <div style="max-width:1280px;margin:0 auto;padding:14px 28px;display:flex;align-items:center;justify-content:{{ hdrJustify }};gap:{{ hdrGap }};flex-wrap:wrap">
+  <div style="max-width:1280px;margin:0 auto;padding:14px {{ hdrPadX }};display:flex;align-items:center;justify-content:{{ hdrJustify }};gap:{{ hdrGap }};flex-wrap:wrap">
     <a href="#home" style="display:flex;align-items:center;gap:14px;text-decoration:none">
       <img src="images/logo-red.png" alt="Worship On Air" style="display:block;width:40px;height:40px;object-fit:contain;flex-shrink:0">
       <div style="display:flex;flex-direction:column;gap:3px;line-height:1.25">
@@ -34,10 +34,10 @@ a:hover{color:#FF3B2F}
         <span style="font-family:'JetBrains Mono','Pretendard Variable',Pretendard,monospace;font-size:10px;letter-spacing:.14em;color:#8A8A8A">하이브리드 쳐치플랜팅 플랫폼</span>
       </div>
     </a>
-    <nav style="display:flex;align-items:center;gap:2px;flex-wrap:wrap;justify-content:{{ hdrJustify }};width:{{ navWidth }}">
+    <nav style="display:flex;align-items:center;gap:0;flex-wrap:{{ navWrap }};justify-content:{{ hdrJustify }};width:{{ navWidth }}">
       <sc-for list="{{ nav }}" as="n" hint-placeholder-count="5">
         <div onMouseEnter="{{ n.onEnter }}" onMouseLeave="{{ n.onLeave }}" style="position:relative">
-          <a href="{{ n.href }}" onClick="{{ n.onClick }}" style="display:block;padding:10px 14px;font-size:14px;font-weight:500;text-decoration:none;color:{{ n.color }}">{{ n.label }}</a>
+          <a href="{{ n.href }}" onClick="{{ n.onClick }}" style="display:block;padding:10px {{ navPadX }};font-size:{{ navFont }};font-weight:500;text-decoration:none;white-space:nowrap;color:{{ n.color }}">{{ n.label }}</a>
           <sc-if value="{{ n.isOpen }}" hint-placeholder-val="{{ false }}">
             <div style="position:absolute;top:100%;left:0;min-width:240px;background:#141414;border:1px solid #262626;display:flex;flex-direction:column;padding:6px 0">
               <sc-for list="{{ n.children }}" as="c" hint-placeholder-count="4">
@@ -58,7 +58,7 @@ a:hover{color:#FF3B2F}
 <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
   <section style="position:relative;overflow:hidden;border-bottom:1px solid #262626;background:#0A0A0A">
     <sc-for list="{{ heroSlides }}" as="h" hint-placeholder-count="1">
-      <img src="{{ h.img }}" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:{{ h.opacity }};transform:scale({{ h.scale }});transition:opacity 1.6s ease, transform 7s ease-out">
+      <img src="{{ h.img }}" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:{{ h.pos }};opacity:{{ h.opacity }};transform:scale({{ h.scale }});transition:opacity 1.6s ease, transform 7s ease-out">
     </sc-for>
     <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,10,10,.78) 0%,rgba(10,10,10,.35) 55%,rgba(10,10,10,.1) 100%)"></div>
     <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,10,.35) 0%,rgba(10,10,10,0) 30%,rgba(10,10,10,0) 60%,#0A0A0A 100%)"></div>
@@ -183,7 +183,7 @@ a:hover{color:#FF3B2F}
   </section>
   <sc-if value="{{ meta.img }}" hint-placeholder-val="{{ false }}">
     <div style="max-width:1280px;margin:0 auto;padding:28px 28px 0">
-      <img src="{{ meta.img }}" alt="" style="display:block;width:100%;aspect-ratio:4/1;object-fit:cover;object-position:center 60%;filter:saturate(.85)">
+      <img src="{{ meta.img }}" alt="" style="display:block;width:100%;aspect-ratio:4/1;object-fit:cover;object-position:center {{ meta.pos }};filter:saturate(.85)">
     </div>
   </sc-if>
 </sc-if>
@@ -196,7 +196,7 @@ a:hover{color:#FF3B2F}
         <h2 style="margin:0;font-size:28px;font-weight:600;line-height:1.25;">우리가 존재하는 이유</h2>
       </div>
       <div style="display:flex;flex-direction:column;gap:14px;font-size:16px;line-height:1.7;color:#C9C9C9;grid-column:span 2;min-width:0">
-        <p style="margin:0;font-size:19px;line-height:1.55;color:#EDEDED">우리는 누구나, 언제, 어디서든 제자 삼는 공동체를 세우고 성장시킬 수 있도록 존재합니다.</p>
+        <p style="margin:0;font-size:19px;line-height:1.55;color:#EDEDED">우리는 언제나, 어디서나, 누구나 제자 삼는 공동체를 세우고 성장시킬 수 있도록 존재합니다.</p>
         <p style="margin:0">이를 위해 우리는 여러 장애물을 넘어서는 혁신적인 사역 방법을 시도하는 것을 두려워하지 않습니다.</p>
       </div>
     </div>
@@ -206,7 +206,7 @@ a:hover{color:#FF3B2F}
         <h2 style="margin:0;font-size:28px;font-weight:600;line-height:1.25;">언제나 어디서나 누구나!</h2>
       </div>
       <div style="display:flex;flex-direction:column;gap:14px;font-size:16px;line-height:1.7;color:#C9C9C9;grid-column:span 2;min-width:0">
-        <p style="margin:0;font-size:19px;line-height:1.55;color:#EDEDED">워십온에어의 비전은 쳐치플랜팅이 어려운 환경에서도 누구나, 어디서나, 언제든지 예수 그리스도를 따르는 신앙 공동체를 쉽게 시작하고 이끌 수 있도록 돕고 세워주는 것입니다.</p>
+        <p style="margin:0;font-size:19px;line-height:1.55;color:#EDEDED">워십온에어의 비전은 쳐치플랜팅이 어려운 환경에서도 언제나, 어디서나, 누구나 예수 그리스도를 따르는 신앙 공동체를 쉽게 시작하고 이끌 수 있도록 돕고 세워주는 것입니다.</p>
         <p style="margin:0">창의적이고 혁신적인 접근으로 유기적인 쳐치플랜팅 운동이 일어나는 생태계를 만들어 갑니다.</p>
         <p style="margin:0">우리는 하이브리드 쳐치플랜팅을 위한 플랫폼을 만들고, 필요한 콘텐츠를 꾸준히 제작하고 나눕니다. 우리는 하이브리드 쳐치플랜팅 모델을 개발하고, 하이브리드 쳐치플랜팅 운동을 일으키기 위해 다양한 방식을 실험하는 데 헌신합니다.</p>
       </div>
@@ -321,22 +321,63 @@ a:hover{color:#FF3B2F}
 
 <sc-if value="{{ isWorship }}" hint-placeholder-val="{{ false }}">
   <section style="border-top:1px solid #262626">
-    <div style="max-width:1280px;margin:0 auto;padding:48px 28px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:24px 40px">
-      <div style="display:flex;flex-direction:column;gap:12px">
-        <span style="font-family:'JetBrains Mono','Pretendard Variable',Pretendard,monospace;font-size:12px;letter-spacing:.1em;color:#8A8A8A">하이브리드 예배</span>
-        <h2 style="margin:0;font-size:28px;font-weight:600;line-height:1.25;">스트리밍이<br>아닌 예배</h2>
+    <div style="max-width:1280px;margin:0 auto;padding:40px 28px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:20px 40px">
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <span style="font-family:'JetBrains Mono','Pretendard Variable',Pretendard,monospace;font-size:12px;letter-spacing:.1em;color:#FF3B2F">01</span>
+        <h2 style="margin:0;font-size:26px;font-weight:600;line-height:1.3">예배를 심습니다</h2>
+        <span style="font-size:15px;line-height:1.6;color:#8A8A8A">예배가 없는 곳에, 공동체가 시작되도록</span>
       </div>
-      <div style="display:flex;flex-direction:column;gap:18px;font-size:16px;line-height:1.7;color:#C9C9C9;grid-column:span 2;min-width:0">
-        
-        <p style="margin:0">우리의 예배는 스트리밍 중심의 온라인 예배가 아닙니다. 한국어 예배와 설교, 다양한 콘텐츠를 제작해 지역 사이트 리더에게 제공하고, 현장 모임을 인도하며 거주 지역에 기독교 공동체를 세워가도록 돕습니다.</p>
-        <p style="margin:0">우리의 목표는 사이트를 프랜차이즈처럼 늘리는 것이 아닙니다. 가능하다면 한인 이민자들이 지역 교회에 정착하도록 돕는 것입니다.</p>
-        <p style="margin:0">현지 캐나다(영어권) 교회가 자신의 교회 안에서 한인 사역을 시작하도록 돕고 있습니다.</p>
-        <p style="margin:0">한인 이민자들이 모여 모국어로 예배할 수 있도록 주일 및 주중 예배 콘텐츠 전체를 제공합니다.</p>
-        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:12px">
-          <a href="https://worshiponair.online.church/" target="_blank" style="display:flex;align-items:center;gap:10px;background:#FF3B2F;color:#0A0A0A;text-decoration:none;padding:14px 24px;font-weight:700" style-hover="background:#EDEDED;color:#0A0A0A">온에어 참여하기</a>
-          <a href="#translator" style="border:1px solid #EDEDED;text-decoration:none;padding:13px 24px;font-weight:600" style-hover="background:#EDEDED;color:#0A0A0A">실시간 AI 설교번역기 →</a>
-        </div>
+      <div style="display:flex;flex-direction:column;gap:14px;font-size:16px;line-height:1.75;color:#C9C9C9;grid-column:span 2;min-width:0">
+        <p style="margin:0">워십온에어는 예배가 없는 곳에 예배를 심고 공동체를 세워 갑니다.</p>
+        <p style="margin:0">캐나다 도시 외곽처럼 가까운 곳에 한인 교회가 없는 지역에서는 예배를 드리는 일 자체가 쉽지 않습니다. 워십온에어는 예배하기 어려운 환경에 있는 공동체가 조금 더 쉽게 예배할 수 있도록 오랫동안 여러 방법으로 노력해 왔습니다.</p>
+        <p style="margin:0">예배를 대신해 주는 것이 아니라, 그곳의 공동체가 스스로 예배하며 자라 가도록 돕는 것이 우리의 방향입니다.</p>
       </div>
+    </div>
+  </section>
+  <section style="border-top:1px solid #262626">
+    <div style="max-width:1280px;margin:0 auto;padding:40px 28px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:20px 40px">
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <span style="font-family:'JetBrains Mono','Pretendard Variable',Pretendard,monospace;font-size:12px;letter-spacing:.1em;color:#FF3B2F">02</span>
+        <h2 style="margin:0;font-size:26px;font-weight:600;line-height:1.3">콘텐츠 제작과 보급</h2>
+        <span style="font-size:15px;line-height:1.6;color:#8A8A8A">원거리의 작은 한인 공동체를 위해</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px;font-size:16px;line-height:1.75;color:#C9C9C9;grid-column:span 2;min-width:0">
+        <p style="margin:0">원거리에 사는 작은 한인 공동체를 위해 디지털 설교와 예배 콘텐츠를 꾸준히 제작하고 보급합니다.</p>
+        <p style="margin:0">현장 모임을 인도하는 사이트 리더가 어려움 없이 예배를 이끌 수 있도록, 한국어 예배와 설교 영상을 준비해 전달합니다.</p>
+        <p style="margin:0">이를 더 잘 돕기 위해 AI 기반 예배 인도 도구도 준비하고 있습니다.</p>
+      </div>
+    </div>
+  </section>
+  <section style="border-top:1px solid #262626">
+    <div style="max-width:1280px;margin:0 auto;padding:40px 28px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:20px 40px">
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <span style="font-family:'JetBrains Mono','Pretendard Variable',Pretendard,monospace;font-size:12px;letter-spacing:.1em;color:#FF3B2F">03</span>
+        <h2 style="margin:0;font-size:26px;font-weight:600;line-height:1.3">찬양집회와 협업</h2>
+        <span style="font-size:15px;line-height:1.6;color:#8A8A8A">함께 예배하는 자리를 만듭니다</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px;font-size:16px;line-height:1.75;color:#C9C9C9;grid-column:span 2;min-width:0">
+        <p style="margin:0">정기적으로 찬양집회를 열어, 지역 교회와 크고 작은 예배팀이 함께 예배할 수 있는 자리를 마련합니다.</p>
+        <p style="margin:0">지역 찬양팀의 예배 콘텐츠를 제작하는 사역도 하고 있어, 예배팀이 자신들의 찬양을 영상과 음원으로 남기고 나눌 수 있도록 돕습니다.</p>
+        <p style="margin:0">밴쿠버 지역의 예배팀과의 협업을 기다리고 있습니다. 함께하고 싶은 팀이 있다면 언제든 연락해 주세요.</p>
+      </div>
+    </div>
+  </section>
+  <section style="border-top:1px solid #262626">
+    <div style="max-width:1280px;margin:0 auto;padding:40px 28px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:20px 40px">
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <span style="font-family:'JetBrains Mono','Pretendard Variable',Pretendard,monospace;font-size:12px;letter-spacing:.1em;color:#FF3B2F">04</span>
+        <h2 style="margin:0;font-size:26px;font-weight:600;line-height:1.3">다음 세대를 위한 실험</h2>
+        <span style="font-size:15px;line-height:1.6;color:#8A8A8A">교회 안에 머무는 예배를 넘어서</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px;font-size:16px;line-height:1.75;color:#C9C9C9;grid-column:span 2;min-width:0">
+        <p style="margin:0">교회 안에 머무는 예배의 형태를 넘어, 다음 세대 젊은 세대를 위한 EDM 워십과 같은 실험적인 예배를 시도하려고 준비하고 있습니다.</p>
+        <p style="margin:0">익숙한 형식에 갇히지 않고, 젊은 세대가 자신의 언어와 음악으로 예배할 수 있는 길을 찾아 갑니다.</p>
+      </div>
+    </div>
+  </section>
+  <section style="border-top:1px solid #262626">
+    <div style="max-width:1280px;margin:0 auto;padding:40px 28px 56px;display:flex;gap:12px;flex-wrap:wrap">
+      <a href="https://worshiponair.online.church/" target="_blank" style="display:flex;align-items:center;gap:10px;background:#FF3B2F;color:#0A0A0A;text-decoration:none;padding:14px 24px;font-weight:700" style-hover="background:#EDEDED;color:#0A0A0A">온에어 참여하기</a>
     </div>
   </section>
 </sc-if>
@@ -380,7 +421,6 @@ a:hover{color:#FF3B2F}
         <h2 style="margin:0 0 4px;font-size:28px;font-weight:600;line-height:1.25;color:#EDEDED">도시 외곽의 원주민 공동체를 섬깁니다</h2>
         <p style="margin:0">워십온에어는 Indigenous Outreach Society of Canada와 협력하여 BC주 릴루엣 일대를 중심으로 원주민 공동체를 돕고, 건강하고 활기찬 공동체를 세워가고 있습니다.</p>
         <p style="margin:0">2024년에는 릴루엣에 현지 선교사를 파송하고, 지역 교회들과 협력하여 원주민 신앙 공동체를 세우기 시작했습니다.</p>
-        <p style="margin:0">이준호 목사는 2014년부터 릴루엣 지역의 원주민(First Nations) 공동체를 섬겨 왔습니다.</p>
         <a href="#partner" style="align-self:flex-start;border:1px solid #EDEDED;text-decoration:none;padding:12px 22px;font-weight:600;margin-top:8px" style-hover="background:#EDEDED;color:#0A0A0A">파트너 되기 →</a>
       </div>
     </div>
@@ -389,15 +429,30 @@ a:hover{color:#FF3B2F}
 
 <sc-if value="{{ isBible }}" hint-placeholder-val="{{ false }}">
   <section style="max-width:1280px;margin:0 auto;padding:48px 28px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:24px 40px">
-    <div style="display:flex;flex-direction:column;gap:20px"><span style="font-family:'JetBrains Mono','Pretendard Variable',Pretendard,monospace;font-size:12px;letter-spacing:.1em;color:#8A8A8A">BOA</span><img src="photos/img-07.jpg" alt="" style="width:100%;aspect-ratio:4/5;object-fit:cover;display:block"></div>
+    <div style="display:flex;flex-direction:column;gap:20px"><span style="font-family:'JetBrains Mono','Pretendard Variable',Pretendard,monospace;font-size:12px;letter-spacing:.1em;color:#8A8A8A">BOA</span><img src="photos/boa-comic.jpg" alt="바이블온에어 BOA 성경연구 소개 만화" style="width:100%;aspect-ratio:916/916;object-fit:cover;display:block"></div>
     <div style="display:flex;flex-direction:column;gap:18px;font-size:16px;line-height:1.7;color:#C9C9C9;grid-column:span 2;min-width:0">
       <p style="margin:0">모든 성도는 하나님의 말씀인 성경을 먹어야 합니다. 하나님의 자녀로서 말씀을 양식으로 삼는 것은 너무나 당연한 일입니다. 그러나 성경에 대한 많은 오해와 잘못된 접근이 신앙생활의 이 핵심을 방해하곤 합니다. 세상의 빛의 자녀로 부름받은 우리가 말씀을 먹지 않는다면, 하나님의 자녀 된 기쁨을 누리지 못한 채 영적 굶주림과 목마름, 영적 가난 속에 살게 될 것입니다.</p>
       <p style="margin:0">하나님의 자녀 된 정체성을 온전히 누리려면 모든 성도가 말씀을 먹어야 합니다. 성경은 생명을 주는 영의 양식입니다. 또한 성경을 통해 우리는 어두운 세상 속에서 빛의 자녀로 밝게 살아갈 힘을 얻습니다.</p>
-      <p style="margin:0;font-size:19px;line-height:1.55;color:#EDEDED">BOA 성경공부 공동체는 시간과 장소의 한계를 넘어, 누구나 어디서든 성경을 공부하고 말씀을 통해 하나님의 자녀로서 풍성한 삶을 누리도록 돕는 성경공부 모임입니다.</p>
+      <p style="margin:0;font-size:19px;line-height:1.55;color:#EDEDED">BOA 성경공부 공동체는 시간과 장소의 한계를 넘어, 언제나 어디서나 누구나 성경을 공부하고 말씀을 통해 하나님의 자녀로서 풍성한 삶을 누리도록 돕는 성경공부 모임입니다.</p>
       <p style="margin:0">성경을 처음 접하는 분이든 오래 공부해 온 분이든 BOA는 모두를 똑같이 환영합니다. 함께 말씀을 읽고 공부하고 나누며, 성경에 드러난 하나님의 뜻을 온전히 깨닫도록 서로 돕습니다.</p>
       <p style="margin:0">BOA는 매주 정해진 본문에 집중합니다. 참여자들은 체계적인 성경공부 방법으로 매일 본문을 공부하고, 온라인 협업 도구로 깨달음과 묵상을 나누며, 온라인·오프라인 모임을 통해 말씀 안에서 하나님의 풍성한 은혜를 경험합니다.</p>
       <p style="margin:0">BOA 성경공부 공동체에 참여하고 싶으시면 아래 신청서를 작성해 주세요.</p>
       <a href="https://www.worshiponair.org/bibleonair" target="_blank" style="align-self:flex-start;background:#FF3B2F;color:#0A0A0A;text-decoration:none;padding:14px 28px;font-weight:700;margin-top:12px" style-hover="background:#EDEDED;color:#0A0A0A">신청하기 →</a>
+    </div>
+  </section>
+  <section style="border-top:1px solid #262626">
+    <div style="max-width:1280px;margin:0 auto;padding:48px 28px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:24px 40px">
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <span style="font-family:'JetBrains Mono','Pretendard Variable',Pretendard,monospace;font-size:12px;letter-spacing:.1em;color:#FF3B2F">디렉터 인사말</span>
+        <img src="photos/img-21.jpg" alt="제요한 목사" style="width:160px;height:200px;object-fit:cover;object-position:center top;display:block;filter:saturate(.9)">
+        <div style="display:flex;flex-direction:column;gap:2px"><span style="font-size:18px;font-weight:700">제요한 목사</span><span style="font-size:14px;color:#8A8A8A">바이블온에어 디렉터</span></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px;font-size:16px;line-height:1.75;color:#C9C9C9;grid-column:span 2;min-width:0">
+        <p style="margin:0;font-size:19px;line-height:1.55;color:#EDEDED">말씀 안에서 함께 자라 가는 공동체에 여러분을 초대합니다.</p>
+        <p style="margin:0">바이블온에어는 성경을 지식으로 쌓는 데 그치지 않고, 말씀을 함께 읽고 나누며 공동체를 세워 가는 성경공부입니다. 일주일에 한 번 모이는 자리에서 끝나지 않고, 한 주 내내 서로의 깨달음과 묵상을 나눕니다.</p>
+        <p style="margin:0">성경을 처음 접하는 분도, 오래 공부해 온 분도 환영합니다. 시간과 장소에 구애받지 않고 말씀 앞에 함께 서는 이 여정에 동참해 주세요.</p>
+        <span style="font-size:15px;color:#8A8A8A">제요한 목사 · 바이블온에어 디렉터</span>
+      </div>
     </div>
   </section>
 </sc-if>
@@ -422,7 +477,7 @@ a:hover{color:#FF3B2F}
       <span style="font-family:'JetBrains Mono','Pretendard Variable',Pretendard,monospace;font-size:12px;letter-spacing:.1em;color:#FF3B2F">연구소 소개</span>
       <div style="display:flex;flex-direction:column;gap:14px;font-size:16px;line-height:1.7;color:#C9C9C9;grid-column:span 2;min-width:0">
         <p style="margin:0;font-size:19px;line-height:1.55;color:#EDEDED">우리는 하이브리드 쳐치플랜팅 모델을 개발하고, 하이브리드 쳐치플랜팅 운동을 일으키기 위해 다양한 방식을 실험하는 데 헌신합니다.</p>
-        <p style="margin:0">쳐치플랜팅 연구소는 누구나, 언제, 어디서든 신앙 공동체를 시작하고 이끌 수 있도록 워십온에어가 효과적인 방법을 연구하고 실험하며 나누는 곳입니다.</p>
+        <p style="margin:0">쳐치플랜팅 연구소는 언제나, 어디서나, 누구나 신앙 공동체를 시작하고 이끌 수 있도록 워십온에어가 효과적인 방법을 연구하고 실험하며 나누는 곳입니다.</p>
       </div>
     </div>
     <div style="display:flex;flex-direction:column;gap:16px">
@@ -757,28 +812,32 @@ a:hover{color:#FF3B2F}
 </main>
 
 <footer style="border-top:1px solid #262626;background:#0A0A0A">
-  <div style="max-width:1280px;margin:0 auto;padding:72px 28px 40px;display:flex;flex-direction:column;gap:36px">
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,170px),1fr));gap:32px;font-size:14px;line-height:1.8">
-      <sc-for list="{{ footerCols }}" as="h" hint-placeholder-count="5">
-        <div style="display:flex;flex-direction:column;gap:2px">
-          <span style="font-family:'JetBrains Mono','Pretendard Variable',Pretendard,monospace;font-size:11px;letter-spacing:.14em;color:#6F6F6F;margin-bottom:8px">{{ h.label }}</span>
-          <sc-for list="{{ h.children }}" as="c" hint-placeholder-count="3">
-            <a href="{{ c.href }}" style="text-decoration:none;color:#C9C9C9">{{ c.label }}</a>
-          </sc-for>
+  <div style="max-width:1280px;margin:0 auto;padding:48px 28px 28px;display:flex;flex-direction:column;gap:32px">
+    <div style="display:flex;align-items:center;gap:28px 40px;flex-wrap:wrap">
+      <a href="#home" style="display:flex;align-items:center;gap:14px;text-decoration:none;flex-shrink:0">
+        <img src="assets/logo-red.png" alt="Worship On Air" style="display:block;width:48px;height:48px;object-fit:contain;flex-shrink:0">
+        <div style="display:flex;flex-direction:column;gap:4px;line-height:1.25">
+          <span style="font-size:20px;font-weight:600;letter-spacing:.04em;color:#EDEDED">WORSHIPONAIR</span>
+          <span style="font-family:'JetBrains Mono','Pretendard Variable',Pretendard,monospace;font-size:11px;letter-spacing:.14em;color:#8A8A8A">하이브리드 쳐치플랜팅 플랫폼</span>
         </div>
-      </sc-for>
-    </div>
-    <div style="display:flex;gap:32px;flex-wrap:wrap;align-items:center;justify-content:space-between;padding-top:24px;border-top:1px solid #262626;font-family:'JetBrains Mono','Pretendard Variable',Pretendard,monospace;font-size:12px;color:#8A8A8A">
-      <div style="display:flex;gap:24px;flex-wrap:wrap">
+      </a>
+      <div style="display:flex;flex-direction:column;gap:2px;font-size:14px;line-height:1.7;color:#C9C9C9;flex:1 1 220px">
         <span>#47-16789 60Ave Surrey BC V3S 1S8</span>
-        <a href="tel:17788624895" style="color:#8A8A8A">778-862-4895</a>
-        <a href="mailto:info@worshiponair.org" style="color:#8A8A8A">info@worshiponair.org</a>
+        <span style="display:flex;gap:6px 16px;flex-wrap:wrap">
+          <a href="tel:17788624895" style="color:#C9C9C9;text-decoration:none" style-hover="color:#FF3B2F">778-862-4895</a>
+          <a href="mailto:info@worshiponair.org" style="color:#C9C9C9;text-decoration:none" style-hover="color:#FF3B2F">info@worshiponair.org</a>
+        </span>
       </div>
-      <div style="display:flex;gap:20px">
-        <a href="https://www.youtube.com/c/worshiponair" target="_blank" style="color:#C9C9C9;text-decoration:none">유튜브 ↗</a>
-        <a href="https://www.facebook.com/worshiponair300" target="_blank" style="color:#C9C9C9;text-decoration:none">페이스북 ↗</a>
+      <div style="display:flex;align-items:center;gap:16px;flex:2 1 320px;min-width:0">
+        <a href="https://fellowshippacific.ca/" target="_blank" style="display:flex;align-items:center;justify-content:center;background:#EDEDED;width:140px;height:64px;flex-shrink:0"><img src="photos/img-06.png" alt="Fellowship Pacific" style="max-height:40px;max-width:112px;object-fit:contain;display:block"></a>
+        <p style="margin:0;font-size:14px;line-height:1.65;color:#C9C9C9;max-width:420px">워십온에어 사역은 캐네디언 펠로우십 퍼시픽 교단에 지역교회로 소속되어 사역하고 있습니다.</p>
+      </div>
+      <div style="display:flex;gap:12px;flex-shrink:0">
+        <a href="https://www.youtube.com/c/worshiponair" target="_blank" aria-label="YouTube" style="width:44px;height:44px;border:1px solid #333;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#EDEDED;text-decoration:none" style-hover="background:#FF3B2F;border-color:#FF3B2F;color:#0A0A0A"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.5 2.5 0 0 0 2.4 7.2C2 8.8 2 12 2 12s0 3.2.4 4.8a2.5 2.5 0 0 0 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8c.4-1.6.4-4.8.4-4.8s0-3.2-.4-4.8zM10 15V9l5.2 3z"></path></svg></a>
+        <a href="https://www.facebook.com/worshiponair300" target="_blank" aria-label="Facebook" style="width:44px;height:44px;border:1px solid #333;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#EDEDED;text-decoration:none" style-hover="background:#FF3B2F;border-color:#FF3B2F;color:#0A0A0A"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M14 8h3V4.5h-3A4.5 4.5 0 0 0 9.5 9v2H7v3.5h2.5V21H13v-6.5h3l.5-3.5H13V9.2c0-.7.3-1.2 1-1.2z"></path></svg></a>
       </div>
     </div>
+    <span style="font-family:'JetBrains Mono','Pretendard Variable',Pretendard,monospace;font-size:12px;color:#6F6F6F;padding-top:20px;border-top:1px solid #262626">© 2026 Worship On Air. All rights reserved.</span>
   </div>
 </footer>
 </div>
@@ -793,8 +852,8 @@ const SITEMAP = [
     { key: 'who', label: '소개', code: '소개', lead: '', img: '' },
   ]},
   { id: 'min', label: '사역', pages: [
-    { key: 'worship', label: '워십온에어', code: '사역', lead: '하이브리드 예배', img: WIX+'img-20.jpg' },
-    { key: 'bible', label: '바이블온에어', code: '사역', lead: 'BOA 성경공부 공동체', img: WIX+'img-16.jpg' },
+    { key: 'worship', pos: '47%', label: '워십온에어', code: '사역', lead: '하이브리드 워십', img: 'photos/studio.jpg' },
+    { key: 'bible', label: '바이블온에어', code: '사역', lead: '바이블온에어는 내가 직접 매일매일 해 먹는 집밥과 같은 성경연구입니다.', img: WIX+'img-16.jpg' },
     { key: 'outreach', label: '아웃리치온에어', code: '사역', lead: '아웃리치는 우리 사역의 핵심 가치이자 DNA입니다.', img: WIX+'img-22.jpg' },
     { key: 'labintro', label: '쳐치플랜팅 연구소', code: '사역', lead: '하이브리드 쳐치플랜팅을 연구하고, 실험하고, 나눕니다.', img: WIX+'img-12.jpg' },
     { key: 'sermonai', label: '실시간 AI 설교번역기', code: '사역', lead: '모든 설교를, 나의 언어로', img: '' },
@@ -812,9 +871,9 @@ const SITEMAP = [
 const FLAT = {};
 SITEMAP.forEach(s => s.pages.forEach(p => { FLAT[p.key] = { ...p, sectionId: s.id }; }));
 const HERO = [
-  { img: WIX+'img-20.jpg', label: '워십온에어', href: '#partner', cta: '함께 개척하기', title: '하이브리드 쳐치플랜팅', text: '우리는 누구나, 언제, 어디서든 제자 삼는 공동체를 세우고 성장시킬 수 있도록 존재합니다. 이를 위해 우리는 여러 장애물을 넘어서는 혁신적인 사역 방법을 시도하는 것을 두려워하지 않습니다.' },
-  { img: WIX+'img-16.jpg', label: '바이블온에어', title: '하이브리드 공동체 성경연구', text: '시간과 장소의 한계를 넘어, 누구나 어디서든 성경을 공부하고 말씀을 통해 하나님의 자녀로서 풍성한 삶을 누리도록 돕는 성경공부 공동체입니다.', href: '#bible', cta: '바이블 온에어 참여하기' },
-  { img: WIX+'img-11.jpg', label: '하이브리드 쳐치플랜팅 연구소', title: '실시간 AI 설교번역기', text: '설교를 실시간으로 번역하는 AI 앱입니다. 성경 번역본을 그대로 인용하고 언어별 신학 용어를 반영합니다. 한국어, 중국어, 펀자브어, 스페인어 등을 지원합니다.', href: '#translator', cta: '데모 신청하기' },
+  { img: 'photos/hero-worship.jpg', pos: 'center 70%', label: '워십온에어', href: '#partner', cta: '함께 쳐치플랜팅하기', title: '하이브리드 쳐치플랜팅', text: '워십온에어는 언제나 어디서나 누구나 그리스도를 따르는 믿음의 공동체를 세우고 성장시킬 수 있도록 돕는 쳐치플랜팅 플랫폼 사역입니다. AI와 디지털 미디어 등 다양한 기술로 쳐치플랜팅의 한계를 넘어, 창의적인 방법을 끊임없이 시도합니다.' },
+  { img: WIX+'img-16.jpg', label: '바이블온에어', title: '하이브리드 공동체 성경연구', text: '바이블온에어의 BOA 성경연구는 직접 성경 본문을 읽고 연구한 내용을 온라인과 오프라인 협업 도구로 서로 나누는 공동체 성경연구입니다. 일주일에 한 번 듣고 끝나는 성경공부가 아니라, 일주일 내내 함께 연구하고 나눕니다. 성경을 지식으로 습득하는 데 그치지 않고, 성경연구를 통해 공동체를 세워 갑니다.', href: '#bible', cta: '바이블 온에어 참여하기' },
+  { img: WIX+'img-11.jpg', label: '하이브리드 쳐치플랜팅 연구소', title: '실시간 AI 설교번역기', text: '실시간으로 설교를 통역해 주는 AI 번역기입니다. 성경 구절은 번역본 그대로 인용하고, 언어별 신학 용어를 학습했습니다. 설교자가 말하는 톤으로 번역해 의미가 자연스럽게 전달됩니다. 한국어·영어·프랑스어를 인식해 한국어, 중국어(만다린·광둥어), 펀자브어, 페르시아어, 스페인어, 프랑스어로 번역합니다.', href: '#translator', cta: '데모 신청하기' },
 ];
 const POSTS = [
   { cat: 'NEWS', catLabel: '소식', date: '2026', title: '2026 여름 아웃리치: 캐슬가 & 레벨스톡', text: '캐슬가와 레벨스톡(BC주) 여름 아웃리치 신청을 받고 있습니다.', img: WIX+'img-13.jpg', href: '#summer' },
@@ -822,26 +881,26 @@ const POSTS = [
   { cat: 'NEWS', catLabel: '소식', date: '2024', title: '릴루엣에 현지 선교사 파송', text: '지역 교회들과 협력하여 원주민 신앙 공동체를 세우기 시작했습니다.', img: WIX+'img-22.jpg', href: '#outreach' },
 ];
 const ARTICLES = [
-  { id: 'building-not-planting', cat: '연구', date: '2026', title: '빌딩이 아닌 플랜팅', deck: '교회는 짓는 것이 아니라 자라는 것입니다. 워십온에어가 생태계를 이야기하는 이유.', img: WIX+'img-20.jpg',
-    body: ['교회는 우리의 계획으로 짓는 건물이 아니라, 하나님의 일하심으로 자라는 생명체입니다. 우리가 할 일은 교회를 만들어 내는 것이 아니라, 교회가 자랄 수 있는 환경과 생태계를 가꾸는 것입니다.', '워십온에어의 비전은 쳐치플랜팅이 어려운 환경에서도 누구나, 어디서나, 언제든지 예수 그리스도를 따르는 신앙 공동체를 쉽게 시작하고 이끌 수 있도록 돕는 것입니다.', '창의적이고 혁신적인 접근으로 유기적인 쳐치플랜팅 운동이 일어나는 생태계를 만들어 갑니다. 그 생태계 안에서 교회들은 스스로 뿌리내리고 자생합니다.', '우리는 하이브리드 쳐치플랜팅 모델을 개발하고, 하이브리드 쳐치플랜팅 운동을 일으키기 위해 다양한 방식을 실험하는 데 헌신합니다.'] },
-  { id: 'translator', cat: '기술', date: '2025', title: '모든 설교를, 나의 언어로', deck: '실시간 AI 설교번역기 개발 이야기', img: WIX+'img-11.jpg',
+  { id: 'building-not-planting', cat: '워십온에어', date: '2026', title: '빌딩이 아닌 플랜팅', deck: '교회는 짓는 것이 아니라 자라는 것입니다. 워십온에어가 생태계를 이야기하는 이유.', img: WIX+'img-20.jpg',
+    body: ['교회는 우리의 계획으로 짓는 건물이 아니라, 하나님의 일하심으로 자라는 생명체입니다. 우리가 할 일은 교회를 만들어 내는 것이 아니라, 교회가 자랄 수 있는 환경과 생태계를 가꾸는 것입니다.', '워십온에어의 비전은 쳐치플랜팅이 어려운 환경에서도 언제나, 어디서나, 누구나 예수 그리스도를 따르는 신앙 공동체를 쉽게 시작하고 이끌 수 있도록 돕는 것입니다.', '창의적이고 혁신적인 접근으로 유기적인 쳐치플랜팅 운동이 일어나는 생태계를 만들어 갑니다. 그 생태계 안에서 교회들은 스스로 뿌리내리고 자생합니다.', '우리는 하이브리드 쳐치플랜팅 모델을 개발하고, 하이브리드 쳐치플랜팅 운동을 일으키기 위해 다양한 방식을 실험하는 데 헌신합니다.'] },
+  { id: 'translator', cat: '기타', date: '2025', title: '모든 설교를, 나의 언어로', deck: '실시간 AI 설교번역기 개발 이야기', img: WIX+'img-11.jpg',
     body: ['2025년, 정부의 여름 일자리 지원금을 받아 소외된 지방 공동체의 언어 장벽을 해소할 AI 기반 모바일 앱을 개발하기 시작했습니다.', 'AI·데이터 과학 분야 시니어 엔지니어 두 명의 자원봉사 지도 아래 컴퓨터공학 전공 학생 두 명이 영어 설교를 실시간으로 한국어 텍스트로 번역하는 서비스를 만들고 있습니다.', '이 앱은 언어 문제로 지역 예배 공동체에 참여하기 어려운 외딴 지역의 소수 그룹을 위한 것입니다. 누구나 쓸 수 있도록 가벼운 화면, 오프라인 기능, 스크린 리더 호환을 갖추었습니다.', '처음에는 한국어에 집중하지만 스페인어, 중국어 등으로 확장할 수 있도록 설계했습니다. 고립된 이들을 예배와 교제로 연결해 모두를 품는 신앙 공동체를 세우는 것이 우리의 사명입니다.'],
     pointsTitle: '주요 기능', points: ['성경 구절은 실제 성경 본문으로 표시', '신학 용어 학습 및 설교 톤 번역', '번역 전 설교 맥락 파악', '텍스트·음성 출력 지원', '다국어 지원: 한국어, 중국어, 펀자브어, 스페인어 등', '사용한 만큼만 결제하는 합리적인 요금'],
     linkHref: 'mailto:info@worshiponair.org?subject=AI%20설교번역기%20데모%20신청', linkLabel: '데모 신청하기' },
-  { id: 'planting', cat: '현장', date: '2026', title: 'BC주 지방 도시에 세워지는 하이브리드 교회', deck: '스트리밍이 아닌, 현장에서 모이는 예배', img: WIX+'img-13.jpg',
+  { id: 'planting', cat: '워십온에어', date: '2026', title: 'BC주 지방 도시에 세워지는 하이브리드 교회', deck: '스트리밍이 아닌, 현장에서 모이는 예배', img: WIX+'img-13.jpg',
     body: ['우리는 다양한 방식의 하이브리드 쳐치플랜팅을 통해 캐나다 BC주 지방 도시의 한인들이 신앙 공동체를 세우도록 돕습니다.', '우리의 예배는 스트리밍 중심의 온라인 예배가 아닙니다. 한국어 예배와 설교, 다양한 콘텐츠를 제작해 지역 사이트 리더에게 제공하고, 현장 모임을 인도하며 거주 지역에 기독교 공동체를 세워가도록 돕습니다.', '우리의 목표는 사이트를 프랜차이즈처럼 늘리는 것이 아닙니다. 가능하다면 한인 이민자들이 지역 교회에 정착하도록 돕고, 현지 캐나다 교회가 자신의 교회 안에서 한인 사역을 시작하도록 함께합니다.'],
     pointsTitle: '하이브리드 쳐치플랜팅 사이트', points: ['레벨스톡 — Hojun Lee, 사이트 리더', '캐슬가 — Albert, 사이트 리더', '윌리엄스 레이크 — Peter Yun, 사이트 리더'] },
-  { id: 'lillooet', cat: '현장', date: '2024', title: '릴루엣, 원주민 공동체 곁에서', deck: '2014년부터 이어온 도시 외곽 원주민 사역', img: WIX+'img-22.jpg',
+  { id: 'lillooet', cat: '아웃리치온에어', date: '2024', title: '릴루엣, 원주민 공동체 곁에서', deck: '2014년부터 이어온 도시 외곽 원주민 사역', img: WIX+'img-22.jpg',
     body: ['워십온에어는 설립자 이준호 목사가 아웃리치를 통해 캐나다 도시 외곽 원주민 공동체의 필요를 마주하면서 시작되었습니다.', '이준호 목사는 2014년부터 릴루엣 지역의 원주민(First Nations) 공동체를 섬겨 왔습니다. 워십온에어는 Indigenous Outreach Society of Canada와 협력하여 릴루엣 일대를 중심으로 건강하고 활기찬 공동체를 세워가고 있습니다.', '2024년에는 릴루엣에 현지 선교사를 파송하고, 지역 교회들과 협력하여 원주민 신앙 공동체를 세우기 시작했습니다.'],
     linkHref: '#outreach', linkLabel: '아웃리치온에어 보기' },
-  { id: 'boa', cat: '말씀', date: '2026', title: '시간과 장소를 넘는 성경공부', deck: '바이블온에어(BOA)는 어떻게 함께 말씀을 읽는가', img: WIX+'img-16.jpg',
+  { id: 'boa', cat: '바이블온에어', date: '2026', title: '시간과 장소를 넘는 성경공부', deck: '바이블온에어(BOA)는 어떻게 함께 말씀을 읽는가', img: WIX+'img-16.jpg',
     body: ['모든 성도는 하나님의 말씀인 성경을 먹어야 합니다. 성경은 생명을 주는 영의 양식이며, 우리는 말씀을 통해 어두운 세상 속에서 빛의 자녀로 살아갈 힘을 얻습니다.', 'BOA는 매주 정해진 본문에 집중합니다. 참여자들은 체계적인 성경공부 방법으로 매일 본문을 공부하고, 온라인 협업 도구로 깨달음과 묵상을 나누며, 온라인·오프라인 모임을 통해 말씀 안에서 하나님의 풍성한 은혜를 경험합니다.', '성경을 처음 접하는 분이든 오래 공부해 온 분이든 BOA는 모두를 똑같이 환영합니다.'],
     linkHref: '#bible', linkLabel: '바이블온에어 참여하기' },
-  { id: 'summer', cat: '소식', date: '2026', title: '2026 여름 아웃리치: 캐슬가 & 레벨스톡', deck: '한인 공동체 방문과 어린이 여름성경학교', img: WIX+'img-29.jpg',
+  { id: 'summer', cat: '아웃리치온에어', date: '2026', title: '2026 여름 아웃리치: 캐슬가 & 레벨스톡', deck: '한인 공동체 방문과 어린이 여름성경학교', img: WIX+'img-29.jpg',
     body: ['매년 여름 BC주 레벨스톡과 캐슬가의 한인 공동체를 방문해 현지 가정들과 예배하고 교제하며, 어린이를 위한 여름성경학교를 엽니다.'],
     pointsTitle: '프로그램', points: ['레벨스톡 공동체 방문 — 예배, 교제, 격려', '캐슬가 공동체 방문 — 사이트 리더 응원', '어린이 여름성경학교 — 찬양, 성경 이야기, 만들기, 게임'] },
-  { id: 'school', cat: '교육', date: '2026', title: '온라인 스쿨을 준비합니다', deck: '쳐치플랜터와 사이트 리더를 위한 온라인 과정', img: WIX+'img-12.jpg',
-    body: ['언제 어디서든 신앙 공동체를 시작하고 이끄는 법을 배울 수 있도록, 워십온에어의 현장 경험으로 만든 온라인 과정을 준비하고 있습니다.'],
+  { id: 'school', cat: '기타', date: '2026', title: '온라인 스쿨을 준비합니다', deck: '쳐치플랜터와 사이트 리더를 위한 온라인 과정', img: WIX+'img-12.jpg',
+    body: ['언제나 어디서나 신앙 공동체를 시작하고 이끄는 법을 배울 수 있도록, 워십온에어의 현장 경험으로 만든 온라인 과정을 준비하고 있습니다.'],
     pointsTitle: '준비 중인 과정', points: ['하이브리드 쳐치플랜팅의 기초', '원격 사이트 이끌기', '사역을 위한 기술과 AI'] },
 ];
 // 오른쪽 배너: 항목을 추가/삭제하면 바로 반영됩니다
@@ -873,7 +932,7 @@ const makeCards = (a, onOpen) => {
   cards.push({ kind: 'end', text: a.linkHref ? a.linkLabel + ' →' : '전체 글 읽기 →', top: 'hcp.lab', size: '22px', weight: 700, gap: '0', bg: '#1A0E0D', metaColor: '#8A8A8A', cursor: 'pointer', onClick: go });
   return cards.map((c, i) => ({ hasImg: !!c.img, img: c.img || '', hasSub: !!c.sub, sub: c.sub || '', onClick: c.onClick || (() => {}), count: (i + 1) + '/' + cards.length, ...c }));
 };
-const LAB_CATS = ['전체', '연구', '현장', '기술', '말씀', '교육', '소식'];
+const LAB_CATS = ['전체', '워십온에어', '바이블온에어', '아웃리치온에어', '지역교회소식', '기타'];
 const artView = a => ({ ...a, href: '#lab/' + a.id, meta: a.date + ' · ' + Math.max(2, Math.round(a.body.join('').length / 400)) + '분 읽기', hasPoints: !!(a.points && a.points.length), hasLink: !!a.linkHref });
 const pad = n => String(n).padStart(2, '0');
 
@@ -919,11 +978,11 @@ class Component extends DCLogic {
     const clock = now.toLocaleTimeString('en-CA', { hour12: false, timeZone: 'America/Vancouver' }) + ' PT · BC, CANADA';
     return {
       nav, footerCols, siblings, sites, homeSites: sites.filter(s => s.place !== '스리랑카'), clock, heroCta: HERO[this.state.hero],
-      heroSlides: HERO.map((h, k) => { const on = k === this.state.hero; return { ...h, num: pad(k + 1), opacity: on ? 1 : 0, scale: on ? 1.06 : 1, shift: on ? '0px' : '12px', events: on ? 'auto' : 'none', numColor: on ? '#EDEDED' : '#8A8A8A', barColor: on ? '#FF3B2F' : 'rgba(237,237,237,.3)', go: () => { clearInterval(this.heroTimer); this.setState({ hero: k }); this.heroTimer = setInterval(() => this.setState(s => ({ hero: (s.hero + 1) % HERO.length })), 6500); } }; }),
+      heroSlides: HERO.map((h, k) => { const on = k === this.state.hero; return { pos: 'center 50%', ...h, num: pad(k + 1), opacity: on ? 1 : 0, scale: on ? 1.06 : 1, shift: on ? '0px' : '12px', events: on ? 'auto' : 'none', numColor: on ? '#EDEDED' : '#8A8A8A', barColor: on ? '#FF3B2F' : 'rgba(237,237,237,.3)', go: () => { clearInterval(this.heroTimer); this.setState({ hero: k }); this.heroTimer = setInterval(() => this.setState(s => ({ hero: (s.hero + 1) % HERO.length })), 6500); } }; }),
       hasSiblings: siblings.length > 1, noSiblings: siblings.length <= 1,
       liveDot: React.createElement('span', { style: { width: 9, height: 9, borderRadius: '50%', background: '#FF3B2F', boxShadow: '0 0 12px #FF3B2F', animation: 'tally 1.6s ease-in-out infinite', display: 'inline-block' } }),
-      meta: cur ? { code: cur.code, title: cur.label, lead: cur.lead, img: cur.img } : {},
-      hdrJustify: this.state.mobile ? 'center' : 'space-between', hdrGap: this.state.mobile ? '8px' : '20px', navWidth: this.state.mobile ? '100%' : 'auto',
+      meta: cur ? { code: cur.code, title: cur.label, lead: cur.lead, img: cur.img, pos: cur.pos || '60%' } : {},
+      hdrJustify: this.state.mobile ? 'center' : 'space-between', hdrGap: this.state.mobile ? '8px' : '20px', navWidth: this.state.mobile ? '100%' : 'auto', hdrPadX: this.state.mobile ? '12px' : '28px', navPadX: this.state.mobile ? '9px' : '12px', navFont: this.state.mobile ? '13px' : '14px', navWrap: this.state.mobile ? 'nowrap' : 'wrap',
       isHome: is('home'), isInner: !!cur && page !== 'lab', isLabIntro: is('labintro'),
       contactRows: [
         { label: '이메일', value: 'info@worshiponair.org', href: 'mailto:info@worshiponair.org' },
@@ -964,7 +1023,7 @@ class Component extends DCLogic {
         const tog = (k, id) => this.setState(s => ({ [k]: { ...s[k], [id]: !s[k][id] } }));
         return {
           isLab: is('lab'), sideBanners: SIDE_BANNERS, sideNews: SIDE_NEWS, isArticle: is('lab') && !!found,
-          labCats: LAB_CATS.map(c => { const on = !found && st.labCat === c; const first = ARTICLES.find(a => c === '전체' || a.cat === c); return { label: c, img: first ? first.img : '', onClick: () => { if (found) location.hash = 'lab'; this.setState({ labCat: c }); }, line: on ? '#EDEDED' : 'transparent', color: on ? '#EDEDED' : '#8A8A8A', weight: on ? 700 : 500 }; }),
+          labCats: LAB_CATS.map(c => { const on = !found && st.labCat === c; const first = ARTICLES.find(a => c === '전체' || a.cat === c); return { label: c, img: first ? first.img : ARTICLES[0].img, onClick: () => { if (found) location.hash = 'lab'; this.setState({ labCat: c }); }, line: on ? '#EDEDED' : 'transparent', color: on ? '#EDEDED' : '#8A8A8A', weight: on ? 700 : 500 }; }),
           feed: list.map(a => { const v = artView(a); const ex = !!st.expanded[a.id] || (found && a.id === found.id); const liked = !!st.liked[a.id];
             return { ...v, cards: makeCards(a, () => this.setState(s => ({ expanded: { ...s.expanded, [a.id]: true } }))), prevCard: e => { const t = e.currentTarget.parentElement.querySelector('[data-track]'); t.scrollBy({ left: -t.clientWidth * 0.86, behavior: 'smooth' }); }, nextCard: e => { const t = e.currentTarget.parentElement.querySelector('[data-track]'); t.scrollBy({ left: t.clientWidth * 0.86, behavior: 'smooth' }); }, expanded: ex, collapsed: !ex, toggleLabel: ex ? '접기' : '더 보기', toggle: () => this.setState(s => ({ expanded: { ...s.expanded, [a.id]: !ex } })), saveColor: st.saved[a.id] ? '#FF3B2F' : '#C9C9C9', open: () => this.setState(s => ({ expanded: { ...s.expanded, [a.id]: true } })), close: () => this.setState(s => ({ expanded: { ...s.expanded, [a.id]: false } })),
               like: () => tog('liked', a.id), heartFill: liked ? '#FF3B2F' : 'none', heartStroke: liked ? '#FF3B2F' : '#EDEDED',
@@ -980,7 +1039,7 @@ class Component extends DCLogic {
       isBible: is('bible'), isPlanting: is('planting'), isLab: is('lab'), sideBanners: SIDE_BANNERS, sideNews: SIDE_NEWS, isSchool: is('school'), isBlog: is('blog'), isTranslator: is('translator'), isAi: is('ai'),
       isSummer: is('summer'), isPartner: is('partner'), isWork: is('work'), isSignage: is('signage'), isDonate: is('donate'),
       modules: [
-        { num: '01', tag: 'CONTENT', title: '하이브리드 예배', desc: '지역 사이트 리더가 인도하는 현장 모임을 위한 한국어 예배·설교 콘텐츠.', href: '#worship', img: WIX+'img-20.jpg' },
+        { num: '01', tag: 'CONTENT', title: '하이브리드 워십', desc: '지역 사이트 리더가 인도하는 현장 모임을 위한 한국어 예배·설교 콘텐츠.', href: '#worship', img: WIX+'img-20.jpg' },
         { num: '02', tag: 'COMMUNITY', title: 'Bible On Air', desc: '시간과 장소를 넘어서는 성경공부 공동체.', href: '#bible', img: WIX+'img-16.jpg' },
         { num: '03', tag: 'NETWORK', title: '하이브리드 쳐치플랜팅', desc: 'BC주 지방 도시 한인들을 위한 신앙 공동체.', href: '#planting', img: WIX+'img-13.jpg' },
         { num: '04', tag: 'AI · BUILD', title: '실시간 AI 설교번역기', desc: '외딴 지역 공동체를 위한 실시간 영어→한국어 설교 번역.', href: '#translator', img: WIX+'img-28.jpg' },
@@ -991,7 +1050,7 @@ class Component extends DCLogic {
         { tag: 'CONTACT', title: '연락하기', href: '#donate' },
       ],
       strategy: [
-        { num: '01', title: '하이브리드 예배', sub: 'AI 기반 설교 번역 서비스', href: '#translator', img: WIX+'img-28.jpg' },
+        { num: '01', title: '하이브리드 워십', sub: 'AI 기반 설교 번역 서비스', href: '#translator', img: WIX+'img-28.jpg' },
         { num: '02', title: '하이브리드 성경공부', sub: 'Bible On Air', href: '#bible', img: WIX+'img-16.jpg' },
         { num: '03', title: '복음 콘텐츠 제작', sub: '지역 공동체로 다가가기', href: '#outreach' },
       ],
@@ -1005,7 +1064,7 @@ class Component extends DCLogic {
         { tag: '어린이', title: '여름성경학교', text: '찬양, 성경 이야기, 만들기, 게임이 있는 어린이 여름성경학교.' },
       ],
       courses: [
-        { meta: '과정 01 · 6주', status: '준비 중', title: '하이브리드 쳐치플랜팅의 기초', text: '전통적 방식이 어려운 곳에서의 개척을 위한 성경적 기초와 워십온에어 모델.', img: WIX+'img-20.jpg' },
+        { meta: '과정 01 · 6주', status: '준비 중', title: '하이브리드 쳐치플랜팅의 기초', text: '전통적 방식이 어려운 곳에서의 쳐치플랜팅을 위한 성경적 기초와 워십온에어 모델.', img: WIX+'img-20.jpg' },
         { meta: '과정 02 · 4주', status: '준비 중', title: '원격 사이트 이끌기', text: '사이트 리더를 위한 실제 훈련: 예배 인도, 소그룹, 목양.', img: WIX+'img-16.jpg' },
         { meta: '과정 03 · 4주', status: '준비 중', title: '사역을 위한 기술과 AI', text: '미디어 제작, 번역, AI 도구로 공동체를 섬기는 법.', img: WIX+'img-11.jpg' },
       ],
