@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha384-sHL9NAb7lN7rfvG5lfHpm643Xkcjzp4jFvuavGOndn6pjVqS6ny56CAt3nsEVT4H" crossorigin="anonymous">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha384-cxOPjt7s7Iz04uaHJceBmS+qpjv2JkIHNVcuOrM+YHwZOmJGBXI00mdUXEq65HTH" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+html,body{margin:0;height:100%;background:#0A0A0A;font-family:'Pretendard Variable',Pretendard,sans-serif}
+#map{position:absolute;inset:0;background:#0A0A0A}
+.leaflet-tile-pane{filter:invert(1) hue-rotate(180deg) grayscale(.85) brightness(.75) contrast(1.1)}
+.leaflet-control-attribution{background:rgba(10,10,10,.7)!important;color:#8A8A8A!important;font-size:10px}
+.leaflet-control-attribution a{color:#B5B5B5!important}
+.leaflet-control-zoom a{background:#141414!important;color:#EDEDED!important;border-color:#262626!important}
+.lbl{background:transparent;border:0;box-shadow:none;color:#EDEDED;font-size:13px;font-weight:600;padding:0 0 0 6px;text-shadow:0 1px 3px #000}
+.lbl::before{display:none}
+.lbl.hq{color:#B5B5B5;font-weight:500}
+#views{position:absolute;top:12px;right:12px;z-index:1000;display:flex;gap:6px}
+#views button{background:#141414;color:#C9C9C9;border:1px solid #333;padding:8px 12px;font:inherit;font-size:12px;cursor:pointer;white-space:nowrap}
+#views button.on{background:#FF3B2F;border-color:#FF3B2F;color:#0A0A0A;font-weight:700}
+</style>
+</head>
+<body>
+<div id="map"></div>
+
+<script>
+const map = L.map('map', { zoomControl: true, scrollWheelZoom: false, attributionControl: true });
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '© OpenStreetMap contributors', maxZoom: 18 }).addTo(map);
+const sites = [
+  { n: '레벨스톡', ll: [50.998, -118.196] },
+  { n: '캐슬가', ll: [49.325, -117.666] },
+  { n: '윌리엄스 레이크', ll: [52.141, -122.141] },
+  { n: '릴루엣', ll: [50.686, -121.936] },
+];
+sites.forEach(s => {
+  L.circleMarker(s.ll, { radius: 7, color: '#FF3B2F', weight: 2, fillColor: '#FF3B2F', fillOpacity: .85 })
+    .addTo(map).bindTooltip(s.n, { permanent: true, direction: 'right', className: 'lbl', offset: [6, 0] });
+});
+L.circleMarker([49.19, -122.85], { radius: 5, color: '#EDEDED', weight: 2, fillColor: '#0A0A0A', fillOpacity: 1 })
+  .addTo(map).bindTooltip('서리 (본부)', { permanent: true, direction: 'right', className: 'lbl hq', offset: [6, 0] });
+const views = {
+  bc: L.latLngBounds([[48.9, -123.4], [52.5, -117.2]]),
+  lk: L.latLngBounds([[5.8, 79.5], [9.9, 81.9]]),
+};
+const show = v => {
+  map.fitBounds(views[v], { padding: [30, 30] });
+  document.querySelectorAll('#views button').forEach(b => b.classList.toggle('on', b.dataset.v === v));
+};
+document.querySelectorAll('#views button').forEach(b => b.onclick = () => show(b.dataset.v));
+show('bc');
+</script>
+</body>
+</html>
