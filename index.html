@@ -448,8 +448,11 @@ a:hover{color:#FF3B2F}
       <p style="margin:0;font-size:19px;line-height:1.55;color:#EDEDED">BOA 성경공부 공동체는 시간과 장소의 한계를 넘어, 언제나 어디서나 누구나 성경을 공부하고 말씀을 통해 하나님의 자녀로서 풍성한 삶을 누리도록 돕는 성경공부 모임입니다.</p>
       <p style="margin:0">성경을 처음 접하는 분이든 오래 공부해 온 분이든 BOA는 모두를 똑같이 환영합니다. 함께 말씀을 읽고 공부하고 나누며, 성경에 드러난 하나님의 뜻을 온전히 깨닫도록 서로 돕습니다.</p>
       <p style="margin:0">BOA는 매주 정해진 본문에 집중합니다. 참여자들은 체계적인 성경공부 방법으로 매일 본문을 공부하고, 온라인 협업 도구로 깨달음과 묵상을 나누며, 온라인·오프라인 모임을 통해 말씀 안에서 하나님의 풍성한 은혜를 경험합니다.</p>
-      <p style="margin:0">BOA 성경공부 공동체에 참여하고 싶으시면 아래 신청서를 작성해 주세요.</p>
-      <a href="https://www.worshiponair.org/bibleonair" target="_blank" style="align-self:flex-start;background:#FF3B2F;color:#0A0A0A;text-decoration:none;padding:14px 28px;font-weight:700;margin-top:12px" style-hover="background:#EDEDED;color:#0A0A0A">신청하기 →</a>
+      <p style="margin:0">BOA 성경공부 공동체에 참여하고 싶으시거나 궁금한 점이 있으시면 문의하기로 메시지를 보내 주세요. 바이블온에어 앱도 소개해 드립니다.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:12px">
+        <a href="mailto:info@worshiponair.org?subject=%EB%B0%94%EC%9D%B4%EB%B8%94%EC%98%A8%EC%97%90%EC%96%B4%20%EB%AC%B8%EC%9D%98" style="background:#FF3B2F;color:#0A0A0A;text-decoration:none;padding:14px 28px;font-weight:700" style-hover="background:#EDEDED;color:#0A0A0A">문의하기 →</a>
+        <a href="#boaapp" style="border:1px solid #EDEDED;color:#EDEDED;text-decoration:none;padding:13px 26px;font-weight:600" style-hover="background:#EDEDED;color:#0A0A0A">바이블온에어 앱 소개 →</a>
+      </div>
     </div>
   </section>
   <section style="border-top:1px solid #262626">
@@ -482,6 +485,75 @@ a:hover{color:#FF3B2F}
 
 
 
+
+<sc-if value="{{ isBoaApp }}" hint-placeholder-val="{{ false }}">
+  <section style="max-width:1280px;margin:0 auto;padding:48px 28px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:32px 48px;align-items:center">
+    <div style="display:flex;flex-direction:column;gap:18px;font-size:16px;line-height:1.7;color:#C9C9C9">
+      <span style="font-family:'JetBrains Mono','Pretendard Variable',Pretendard,monospace;font-size:12px;letter-spacing:.1em;color:#FF3B2F">BOA APP · bibleonair.ca</span>
+      <h2 style="margin:0;font-size:clamp(28px,4vw,40px);font-weight:700;line-height:1.25;color:#EDEDED">함께 말씀을 읽고, 나누고,<br>자라는 공동체 성경 연구</h2>
+      <p style="margin:0">바이블온에어 앱은 BOA 성경공부 공동체를 위한 웹앱입니다. 따로 설치할 필요 없이 휴대폰이나 컴퓨터의 브라우저에서 bibleonair.ca로 바로 사용할 수 있습니다.</p>
+      <p style="margin:0">매주 그룹이 함께 정한 본문을 각자 단계별로 연구하고, 깨달은 것을 그룹과 나누며, 서로의 연구를 통해 함께 배웁니다.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:8px">
+        <a href="https://bibleonair.ca" target="_blank" rel="noopener" style="background:#FF3B2F;color:#0A0A0A;text-decoration:none;padding:14px 28px;font-weight:700" style-hover="background:#EDEDED;color:#0A0A0A">앱 열기 ↗</a>
+        <a href="mailto:info@worshiponair.org?subject=%EB%B0%94%EC%9D%B4%EB%B8%94%EC%98%A8%EC%97%90%EC%96%B4%20%EB%AC%B8%EC%9D%98" style="border:1px solid #EDEDED;color:#EDEDED;text-decoration:none;padding:13px 26px;font-weight:600" style-hover="background:#EDEDED;color:#0A0A0A">문의하기 →</a>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px">
+      <figure style="margin:0;display:flex;flex-direction:column;gap:12px">
+        <div style="background:#000;border:1px solid #262626;border-radius:22px;padding:10px;display:flex;justify-content:center"><img src="photos/boa-app-study.jpg" alt="바이블온에어 앱 연구실 화면: 리더가 정한 본문과 5단계 연구" style="width:100%;max-width:300px;height:auto;display:block;border-radius:14px"></div>
+        <figcaption style="font-size:13px;color:#8A8A8A;text-align:center">연구실 · 이번 주 본문과 5단계 연구</figcaption>
+      </figure>
+      <figure style="margin:0;display:flex;flex-direction:column;gap:12px">
+        <div style="background:#000;border:1px solid #262626;border-radius:22px;padding:10px;display:flex;justify-content:center"><img src="photos/boa-app-group.jpg" alt="바이블온에어 앱에서 그룹원의 연구를 보는 화면" style="width:100%;max-width:300px;height:auto;display:block;border-radius:14px"></div>
+        <figcaption style="font-size:13px;color:#8A8A8A;text-align:center">그룹원의 연구 함께 보기</figcaption>
+      </figure>
+    </div>
+  </section>
+  <section style="border-top:1px solid #262626">
+    <div style="max-width:1280px;margin:0 auto;padding:48px 28px;display:flex;flex-direction:column;gap:8px">
+      <span style="font-family:'JetBrains Mono','Pretendard Variable',Pretendard,monospace;font-size:12px;letter-spacing:.1em;color:#8A8A8A">FEATURES</span>
+      <h2 style="margin:0 0 16px;font-size:28px;font-weight:600;line-height:1.3;color:#EDEDED">앱으로 이렇게 함께합니다</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:0 40px">
+      <div style="display:flex;flex-direction:column;gap:10px;padding:24px 0;border-top:1px solid #262626">
+        <span style="font-family:'JetBrains Mono','Pretendard Variable',Pretendard,monospace;font-size:12px;letter-spacing:.1em;color:#FF3B2F">01</span>
+        <h3 style="margin:0;font-size:20px;font-weight:600;line-height:1.35;color:#EDEDED">리더가 정한 이번 주 본문</h3>
+        <p style="margin:0;font-size:15px;line-height:1.7;color:#B5B5B5">그룹 리더가 매주 본문과 기간을 정합니다. 남은 날짜를 확인하며 한 주 동안 모두가 같은 본문에 집중합니다.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px;padding:24px 0;border-top:1px solid #262626">
+        <span style="font-family:'JetBrains Mono','Pretendard Variable',Pretendard,monospace;font-size:12px;letter-spacing:.1em;color:#FF3B2F">02</span>
+        <h3 style="margin:0;font-size:20px;font-weight:600;line-height:1.35;color:#EDEDED">5단계 성경연구</h3>
+        <p style="margin:0;font-size:15px;line-height:1.7;color:#B5B5B5">읽기, 번역, 문단, 하나님, 중심사상. 다섯 단계를 따라 본문을 깊이 연구합니다. 첫 단계에서는 아는 것을 내려놓고 처음 보는 것처럼 낯설게, 체계적으로, 꼼꼼히 관찰합니다.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px;padding:24px 0;border-top:1px solid #262626">
+        <span style="font-family:'JetBrains Mono','Pretendard Variable',Pretendard,monospace;font-size:12px;letter-spacing:.1em;color:#FF3B2F">03</span>
+        <h3 style="margin:0;font-size:20px;font-weight:600;line-height:1.35;color:#EDEDED">나만 보기, 그룹에 나누기</h3>
+        <p style="margin:0;font-size:15px;line-height:1.7;color:#B5B5B5">내 연구는 나만 볼 수도 있고 그룹에 나눌 수도 있습니다. 그룹원들의 연구를 함께 읽으며 서로에게서 배웁니다.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px;padding:24px 0;border-top:1px solid #262626">
+        <span style="font-family:'JetBrains Mono','Pretendard Variable',Pretendard,monospace;font-size:12px;letter-spacing:.1em;color:#FF3B2F">04</span>
+        <h3 style="margin:0;font-size:20px;font-weight:600;line-height:1.35;color:#EDEDED">나의 신앙 여정</h3>
+        <p style="margin:0;font-size:15px;line-height:1.7;color:#B5B5B5">탐색자, 배우는 자, 따르는 자, 섬기는 자, 제자 삼는 자. 나의 신앙 여정을 기록하고, 리더는 이를 바탕으로 그룹을 안내합니다.</p>
+      </div>
+      </div>
+    </div>
+  </section>
+  <section style="border-top:1px solid #262626">
+    <div style="max-width:1280px;margin:0 auto;padding:48px 28px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:32px 48px;align-items:center">
+      <div style="display:flex;justify-content:center">
+        <div style="width:100%;max-width:320px;background:#000;border:1px solid #262626;border-radius:22px;padding:10px"><img src="photos/boa-app-journey.jpg" alt="바이블온에어 앱 나의 신앙 여정 화면" style="width:100%;height:auto;display:block;border-radius:14px"></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px;font-size:16px;line-height:1.7;color:#C9C9C9">
+        <span style="font-family:'JetBrains Mono','Pretendard Variable',Pretendard,monospace;font-size:12px;letter-spacing:.1em;color:#FF3B2F">START</span>
+        <h2 style="margin:0;font-size:28px;font-weight:600;line-height:1.3;color:#EDEDED">BOA 그룹과 함께 시작하세요</h2>
+        <p style="margin:0">바이블온에어 앱은 BOA 그룹 안에서 함께 사용합니다. 그룹에 참여하고 싶으시거나 앱 사용에 대해 궁금한 점이 있으시면 문의하기로 메시지를 보내 주세요. 함께할 그룹을 안내해 드립니다.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:6px">
+          <a href="mailto:info@worshiponair.org?subject=%EB%B0%94%EC%9D%B4%EB%B8%94%EC%98%A8%EC%97%90%EC%96%B4%20%EB%AC%B8%EC%9D%98" style="background:#FF3B2F;color:#0A0A0A;text-decoration:none;padding:14px 28px;font-weight:700" style-hover="background:#EDEDED;color:#0A0A0A">문의하기 →</a>
+          <a href="#bible" style="border:1px solid #EDEDED;color:#EDEDED;text-decoration:none;padding:13px 26px;font-weight:600" style-hover="background:#EDEDED;color:#0A0A0A">← 바이블온에어 소개</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</sc-if>
 
 <sc-if value="{{ isLabIntro }}" hint-placeholder-val="{{ false }}">
   <section style="max-width:1280px;margin:0 auto;padding:48px 28px;display:flex;flex-direction:column;gap:40px">
@@ -976,6 +1048,7 @@ const SITEMAP = [
   { id: 'min', label: '사역', pages: [
     { key: 'worship', pos: '47%', label: '워십온에어', code: '사역', lead: '하이브리드 워십', img: 'photos/studio.jpg' },
     { key: 'bible', label: '바이블온에어', code: '사역', lead: '바이블온에어는 내가 직접 매일매일 해 먹는 집밥과 같은 성경연구입니다.', img: WIX+'img-16.jpg' },
+    { key: 'boaapp', label: '바이블온에어 앱', code: '사역', lead: '함께 말씀을 읽고, 나누고, 자라는 공동체 성경 연구', img: '' },
     { key: 'outreach', label: '아웃리치온에어', code: '사역', lead: '아웃리치는 우리 사역의 핵심 가치이자 DNA입니다.', img: WIX+'img-22.jpg' },
     { key: 'labintro', label: '쳐치플랜팅 연구소', code: '사역', lead: '하이브리드 쳐치플랜팅을 연구하고, 실험하고, 나눕니다.', img: WIX+'img-12.jpg' },
     { key: 'sermonai', label: '실시간 AI 설교번역기', code: '사역', lead: '모든 설교를, 나의 언어로', img: '' },
@@ -1181,7 +1254,7 @@ class Component extends DCLogic {
       })(),
       isVision: is('who'), isTeam: is('who'), isHistory: is('who'),
       isApproach: is('lab'), isWorship: is('worship'), isOutreach: is('outreach'),
-      isBible: is('bible'), isPlanting: is('planting'), isLab: is('lab'), sideBanners: SIDE_BANNERS, sideNews: SIDE_NEWS, isSchool: is('school'), isBlog: is('blog'), isTranslator: is('translator'), isAi: is('ai'),
+      isBible: is('bible'), isBoaApp: is('boaapp'), isPlanting: is('planting'), isLab: is('lab'), sideBanners: SIDE_BANNERS, sideNews: SIDE_NEWS, isSchool: is('school'), isBlog: is('blog'), isTranslator: is('translator'), isAi: is('ai'),
       isSummer: is('summer'), isPartner: is('partner'), isWork: is('work'), isSignage: is('signage'), isDonate: is('donate'),
       modules: [
         { num: '01', tag: 'WORSHIP', title: '워십온에어', desc: '예배가 없는 곳에 예배를 심고, 작은 공동체가 예배할 수 있도록 돕습니다.', href: '#worship', img: 'photos/studio.jpg' },
