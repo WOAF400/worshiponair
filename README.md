@@ -1,6 +1,6 @@
 # Worship On Air 사이트
 
-GitHub Pages로 배포하는 정적 사이트입니다. 빌드 과정이 없습니다.
+GitHub + Vercel(또는 GitHub Pages)로 배포하는 정적 사이트입니다. 빌드 과정이 없습니다.
 
 ## 파일
 - `index.html` — 사이트 본체 (메뉴·페이지·글 내용이 모두 들어 있음)
@@ -9,7 +9,13 @@ GitHub Pages로 배포하는 정적 사이트입니다. 빌드 과정이 없습�
 - `images/` — 로고와 교회 사진
 - `.nojekyll` — GitHub Pages가 파일을 그대로 서비스하도록 하는 표시
 
-## 배포 방법
+## Vercel 배포
+1. GitHub 새 저장소에 이 폴더의 파일 전체를 루트로 업로드
+2. vercel.com → Add New → Project → 저장소 Import
+3. Framework Preset: **Other**, 빌드 설정은 비워 두고 Deploy
+4. Settings → Domains에서 worshiponair.org 연결
+
+## GitHub Pages 배포
 1. GitHub에서 새 저장소(Repository)를 만듭니다. 예: `worshiponair-site`
 2. 이 폴더의 파일 전체를 저장소 맨 위(루트)에 업로드합니다.
 3. 저장소 **Settings → Pages → Build and deployment**
