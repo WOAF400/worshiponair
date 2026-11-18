@@ -451,7 +451,7 @@ a:hover{color:#FF3B2F}
       <p style="margin:0">BOA 성경공부 공동체에 참여하고 싶으시거나 궁금한 점이 있으시면 문의하기로 메시지를 보내 주세요. 바이블온에어 앱도 소개해 드립니다.</p>
       <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:12px">
         <a href="mailto:info@worshiponair.org?subject=%EB%B0%94%EC%9D%B4%EB%B8%94%EC%98%A8%EC%97%90%EC%96%B4%20%EB%AC%B8%EC%9D%98" style="background:#FF3B2F;color:#0A0A0A;text-decoration:none;padding:14px 28px;font-weight:700" style-hover="background:#EDEDED;color:#0A0A0A">문의하기 →</a>
-        <a href="#boaapp" style="border:1px solid #EDEDED;color:#EDEDED;text-decoration:none;padding:13px 26px;font-weight:600" style-hover="background:#EDEDED;color:#0A0A0A">바이블온에어 앱 소개 →</a>
+        <a href="#boa-app" onClick="{{ scrollToApp }}" style="border:1px solid #EDEDED;color:#EDEDED;text-decoration:none;padding:13px 26px;font-weight:600" style-hover="background:#EDEDED;color:#0A0A0A">바이블온에어 앱 소개 ↓</a>
       </div>
     </div>
   </section>
@@ -486,7 +486,8 @@ a:hover{color:#FF3B2F}
 
 
 
-<sc-if value="{{ isBoaApp }}" hint-placeholder-val="{{ false }}">
+<sc-if value="{{ isBible }}" hint-placeholder-val="{{ false }}">
+  <div id="boa-app" style="border-top:1px solid #262626;scroll-margin-top:80px"></div>
   <section style="max-width:1280px;margin:0 auto;padding:48px 28px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:32px 48px;align-items:center">
     <div style="display:flex;flex-direction:column;gap:18px;font-size:16px;line-height:1.7;color:#C9C9C9">
       <span style="font-family:'JetBrains Mono','Pretendard Variable',Pretendard,monospace;font-size:12px;letter-spacing:.1em;color:#FF3B2F">BOA APP · bibleonair.ca</span>
@@ -548,7 +549,6 @@ a:hover{color:#FF3B2F}
         <p style="margin:0">바이블온에어 앱은 BOA 그룹 안에서 함께 사용합니다. 그룹에 참여하고 싶으시거나 앱 사용에 대해 궁금한 점이 있으시면 문의하기로 메시지를 보내 주세요. 함께할 그룹을 안내해 드립니다.</p>
         <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:6px">
           <a href="mailto:info@worshiponair.org?subject=%EB%B0%94%EC%9D%B4%EB%B8%94%EC%98%A8%EC%97%90%EC%96%B4%20%EB%AC%B8%EC%9D%98" style="background:#FF3B2F;color:#0A0A0A;text-decoration:none;padding:14px 28px;font-weight:700" style-hover="background:#EDEDED;color:#0A0A0A">문의하기 →</a>
-          <a href="#bible" style="border:1px solid #EDEDED;color:#EDEDED;text-decoration:none;padding:13px 26px;font-weight:600" style-hover="background:#EDEDED;color:#0A0A0A">← 바이블온에어 소개</a>
         </div>
       </div>
     </div>
@@ -1048,7 +1048,6 @@ const SITEMAP = [
   { id: 'min', label: '사역', pages: [
     { key: 'worship', pos: '47%', label: '워십온에어', code: '사역', lead: '하이브리드 워십', img: 'photos/studio.jpg' },
     { key: 'bible', label: '바이블온에어', code: '사역', lead: '바이블온에어는 내가 직접 매일매일 해 먹는 집밥과 같은 성경연구입니다.', img: WIX+'img-16.jpg' },
-    { key: 'boaapp', label: '바이블온에어 앱', code: '사역', lead: '함께 말씀을 읽고, 나누고, 자라는 공동체 성경 연구', img: '' },
     { key: 'outreach', label: '아웃리치온에어', code: '사역', lead: '아웃리치는 우리 사역의 핵심 가치이자 DNA입니다.', img: WIX+'img-22.jpg' },
     { key: 'labintro', label: '쳐치플랜팅 연구소', code: '사역', lead: '하이브리드 쳐치플랜팅을 연구하고, 실험하고, 나눕니다.', img: WIX+'img-12.jpg' },
     { key: 'sermonai', label: '실시간 AI 설교번역기', code: '사역', lead: '모든 설교를, 나의 언어로', img: '' },
@@ -1154,7 +1153,7 @@ const pad = n => String(n).padStart(2, '0');
 
 class Component extends DCLogic {
   state = { contactSent: false, aiSent: false, article: null, labCat: '전체', subSent: false, expanded: {}, liked: {}, saved: {}, shared: null, page: 'home', open: null, slide: 0, demoSent: false, signSent: false, now: new Date(), hero: 0, schoolSent: false, blogCat: 'All' };
-  readHash = () => { let h = decodeURIComponent((location.hash || '').replace('#', '')); h = ({ what: 'worship', planting: 'lab/planting', translator: 'sermonai', school: 'lab/school', blog: 'lab', ai: 'lab' })[h] || h; if (h.startsWith('lab/')) return { page: 'lab', article: h.slice(4) }; return { page: FLAT[h] ? h : 'home', article: null }; };
+  readHash = () => { let h = decodeURIComponent((location.hash || '').replace('#', '')); h = ({ boaapp: 'bible', what: 'worship', planting: 'lab/planting', translator: 'sermonai', school: 'lab/school', blog: 'lab', ai: 'lab' })[h] || h; if (h.startsWith('lab/')) return { page: 'lab', article: h.slice(4) }; return { page: FLAT[h] ? h : 'home', article: null }; };
   onHash = () => { this.setState({ ...this.readHash(), open: null }); window.scrollTo(0, 0); };
   onResize = () => this.setState({ mobile: window.innerWidth < 640 });
   componentDidMount() {
@@ -1254,7 +1253,7 @@ class Component extends DCLogic {
       })(),
       isVision: is('who'), isTeam: is('who'), isHistory: is('who'),
       isApproach: is('lab'), isWorship: is('worship'), isOutreach: is('outreach'),
-      isBible: is('bible'), isBoaApp: is('boaapp'), isPlanting: is('planting'), isLab: is('lab'), sideBanners: SIDE_BANNERS, sideNews: SIDE_NEWS, isSchool: is('school'), isBlog: is('blog'), isTranslator: is('translator'), isAi: is('ai'),
+      isBible: is('bible'), scrollToApp: (e) => { if (e) e.preventDefault(); const el = document.getElementById('boa-app'); if (el) el.scrollIntoView({ behavior: 'smooth' }); }, isPlanting: is('planting'), isLab: is('lab'), sideBanners: SIDE_BANNERS, sideNews: SIDE_NEWS, isSchool: is('school'), isBlog: is('blog'), isTranslator: is('translator'), isAi: is('ai'),
       isSummer: is('summer'), isPartner: is('partner'), isWork: is('work'), isSignage: is('signage'), isDonate: is('donate'),
       modules: [
         { num: '01', tag: 'WORSHIP', title: '워십온에어', desc: '예배가 없는 곳에 예배를 심고, 작은 공동체가 예배할 수 있도록 돕습니다.', href: '#worship', img: 'photos/studio.jpg' },
